@@ -1,0 +1,23 @@
+{
+  "name": "GraphQL_pg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanMach97/GraphQL_pg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JanMach97/GraphQL_pg/issues"
+  },
+  "homepage": "https://github.com/JanMach97/GraphQL_pg#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.16.7"
+  }
+}
