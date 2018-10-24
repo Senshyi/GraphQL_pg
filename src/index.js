@@ -10,8 +10,9 @@ let idCount = links.length
 // 2
 const resolvers = {
   Query: {
-    info: () => `This is the API of a Hackernews Clone`,
+    info: () => `This is SOMETHING`,
     feed: () => links,
+    link: (root, args) => links.find(obj => obj.id === args.id)
   },
   Mutation: {
     post: (root, args) => {
@@ -22,6 +23,14 @@ const resolvers = {
       }
       links.push(link)
       return link
+    },
+    deleteLink: (root, args) => {
+      let deletedLink = links.find(link => link.id === args.id)
+      links = links.filter(link => {
+        return link.id !== args.id
+      })
+
+      return deletedLink
     }
   }
 }
