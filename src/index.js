@@ -29,8 +29,22 @@ const resolvers = {
       links = links.filter(link => {
         return link.id !== args.id
       })
-
       return deletedLink
+    },
+    updateLink: (_, args) => {
+      let updatedLink
+
+      links = links.map(link => {
+        if (link.id === args.id) {
+          updatedLink = {
+            id: link.id,
+            url: args.url ? args.url : link.url,
+            description: args.description ? args.description : link.description,
+          }
+          return updatedLink
+        } else return link
+      })
+      return updatedLink
     }
   }
 }
