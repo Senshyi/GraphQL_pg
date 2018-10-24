@@ -19,6 +19,7 @@
   "homepage": "https://github.com/JanMach97/GraphQL_pg#readme",
   "dependencies": {
     "graphql-yoga": "^1.16.7",
-    "prisma": "^1.19.0"
+    "prisma": "^1.19.0",
+    "prisma-binding": "^2.1.6"
   }
 }
