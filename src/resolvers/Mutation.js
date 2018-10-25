@@ -5,10 +5,10 @@ const { APP_SECRET, getUserId } = require('../utils')
 async function signup(parent, args, context, info) {
   const password = await bcrypt.hash(args.password, 10)
   const user = await context.db.mutation.createUser({
-    datan: {...args, password},
+    data: {...args, password},
   }, `{ id }`)
 
-  const token = jws.sign({ userId: user.id }, APP_SECRET)
+  const token = jwt.sign({ userId: user.id }, APP_SECRET)
 
   return {
     token,
@@ -33,6 +33,20 @@ async function login(parent, args, context, info) {
     token,
     user,
   }
+}
+
+function post(parent, args, context, info) {
+  const userId = getUserId(context)
+  return context.db.mutation.createLink(
+    {
+      data: {
+        url: args.url,
+        description: args.description,
+        postedBy: { connect: { id: userId } },
+      },
+    },
+    info,
+  )
 }
 
 module.exports = {
