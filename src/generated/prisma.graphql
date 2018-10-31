@@ -1,5 +1,5 @@
 # source: https://eu1.prisma.sh/jan-machacek/demo/dev
-# timestamp: Thu Oct 25 2018 14:41:55 GMT+0100 (British Summer Time)
+# timestamp: Wed Oct 31 2018 15:56:39 GMT+0000 (Greenwich Mean Time)
 
 type AggregateLink {
   count: Int!
@@ -122,6 +122,11 @@ input LinkUpdateInput {
   description: String
   url: String
   postedBy: UserUpdateOneWithoutLinksInput
+}
+
+input LinkUpdateManyMutationInput {
+  description: String
+  url: String
 }
 
 input LinkUpdateManyWithoutPostedByInput {
@@ -322,8 +327,8 @@ type Mutation {
   deleteUser(where: UserWhereUniqueInput!): User
   upsertLink(where: LinkWhereUniqueInput!, create: LinkCreateInput!, update: LinkUpdateInput!): Link!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  updateManyLinks(data: LinkUpdateInput!, where: LinkWhereInput): BatchPayload!
-  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyLinks(data: LinkUpdateManyMutationInput!, where: LinkWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   deleteManyLinks(where: LinkWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
@@ -486,6 +491,12 @@ input UserUpdateInput {
   email: String
   password: String
   links: LinkUpdateManyWithoutPostedByInput
+}
+
+input UserUpdateManyMutationInput {
+  name: String
+  email: String
+  password: String
 }
 
 input UserUpdateOneWithoutLinksInput {
