@@ -1,6 +1,8 @@
 # GraphQL_pg
 
-This is a Harcker News Clone back-end
+This is a Harcker News Clone back-end.
+
+Front-end can be found [here](https://github.com/JanMach97/graphql-pg-fe)
 
 ## Getting started
 
